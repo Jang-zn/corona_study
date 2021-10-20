@@ -1,4 +1,20 @@
 package com.study.corona_study.controller;
 
-public class AuthController {
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class AuthController     {
+
+    @GetMapping("/login")
+    public String login(){
+        return "auth/login";
+    }
+
+    @GetMapping("/signUp")
+    public String signUp(){
+        return "auth/signUp";
+    }
+
 }
