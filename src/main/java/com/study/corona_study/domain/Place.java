@@ -1,6 +1,7 @@
 package com.study.corona_study.domain;
 
 
+import com.study.corona_study.constant.PlaceType;
 import lombok.Data;
 
 import java.time.LocalDateTime;

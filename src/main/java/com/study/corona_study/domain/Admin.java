@@ -3,7 +3,6 @@ package com.study.corona_study.domain;
 
 import lombok.*;
 
-import javax.persistence.Entity;
 import java.time.LocalDateTime;
 
 @Data
