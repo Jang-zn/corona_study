@@ -2,15 +2,12 @@ package com.study.corona_study.dto;
 
 
 import com.study.corona_study.constant.ErrorCode;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @ToString
 @EqualsAndHashCode
-@RequiredArgsConstructor
+@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class APIErrorResoponse {
 
     private final boolean success;

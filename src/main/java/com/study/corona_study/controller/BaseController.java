@@ -1,14 +1,16 @@
 package com.study.corona_study.controller;
 
 
+import com.study.corona_study.exception.GeneralException;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 //ErrorController 구현하면 error페이지 제어가능 -> 안하면 baseController#error 어쩌고 뜸
-public class BaseController implements ErrorController {
+public class BaseController {
 
     //루트 - 메인페이지 띄워줄거 설정함.
     //페이지 설정 안해놓으면 기본적으로 JSP view파일을 찾으려고 함.
@@ -21,10 +23,10 @@ public class BaseController implements ErrorController {
         return "index";
     }
 
-
-    @RequestMapping("/error")
-    public String error(){
-        return "error";
+    @GetMapping("/errorTest")
+    public String errorTest() throws Exception{
+        throw new Exception("test");
     }
+
 
 }
