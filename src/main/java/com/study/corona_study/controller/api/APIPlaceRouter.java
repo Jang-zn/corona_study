@@ -17,6 +17,8 @@ public class APIPlaceRouter {
 
     @Bean
     public RouterFunction<ServerResponse> placeRouter(APIPlaceHandler handler){
+        //nested routing으로 공통 path 지정
+        //핸들러 구현 후 핸들러를 콜백함수로 입력
         return route().nest(path("/api/places"),
                 builder->builder
                      .GET("", handler::getPlaces)

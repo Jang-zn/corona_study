@@ -20,15 +20,19 @@ public class APIPlaceHandler {
     public ServerResponse getPlaces(ServerRequest request) throws Exception {
         return ok().body(List.of("place1", "place2"));
     }
+    //create는 URI.create해서 헤더 uri를 지정해줘야 함
     public ServerResponse createPlace(ServerRequest request) throws Exception {
         return created(URI.create("/api/places/1")).body(true); // TODO: 1은 구현시 처리
     }
+
     public ServerResponse getPlacesDetail(ServerRequest request) throws Exception {
         return ok().body("place : "+request.pathVariable("placeId"));
     }
+
     public ServerResponse updatePlaceDetail(ServerRequest request) throws Exception {
         return ok().body(true);
     }
+
     public ServerResponse deletePlace(ServerRequest request) throws Exception {
         return ok().body(true);
     }
