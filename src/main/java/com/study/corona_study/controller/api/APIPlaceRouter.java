@@ -1,6 +1,7 @@
 package com.study.corona_study.controller.api;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.function.RouterFunction;
@@ -15,14 +16,14 @@ import static org.springframework.web.servlet.function.RouterFunctions.route;
 public class APIPlaceRouter {
 
     @Bean
-    public RouterFunction<ServerResponse> placeRouter(){
+    public RouterFunction<ServerResponse> placeRouter(APIPlaceHandler handler){
         return route().nest(path("/api/places"),
                 builder->builder
-                     .GET("", req->ServerResponse.ok().body(List.of("place1", "place2")))
-                     .POST("", req->ServerResponse.ok().body(true))
-                     .GET("/{placeId}", req->ServerResponse.ok().body("place : "+req.pathVariable("placeId")))
-                     .PUT("/{placeId}", req->ServerResponse.ok().body(true))
-                     .DELETE("/{placeId}", req->ServerResponse.ok().body(true))
+                     .GET("", handler::getPlaces)
+                     .POST("", handler::createPlace)
+                     .GET("/{placeId}", handler::getPlacesDetail)
+                     .PUT("/{placeId}", handler::updatePlaceDetail)
+                     .DELETE("/{placeId}",handler::deletePlace )
                 )
                 .build();
     }
