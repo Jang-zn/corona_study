@@ -8,6 +8,7 @@ class CoronaStudyApplicationTests {
 
     @Test
     void contextLoads() {
+
     }
 
 }
