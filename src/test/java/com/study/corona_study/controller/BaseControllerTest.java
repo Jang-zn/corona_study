@@ -22,6 +22,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 class BaseControllerTest {
 
+    private final MockMvc mvc;
+
+    public BaseControllerTest(@Autowired MockMvc mvc){
+        this.mvc = mvc;
+    }
+
+
     @DisplayName("[view][GET]기본요청")
     @Test
     //테스트 메소드명 명명 규칙
@@ -29,7 +36,7 @@ class BaseControllerTest {
     //2. Should 방식 : page명Should기대동작
     //3. given_when_then : givenNothing_whenRequestingRootPage_thenReturnIndexPage
     //4. @DisplayName
-    void indexSholudShowIndexPage(@Autowired MockMvc mvc) throws Exception{
+    void indexSholudShowIndexPage() throws Exception{
         //Given
 
         //When&Then
