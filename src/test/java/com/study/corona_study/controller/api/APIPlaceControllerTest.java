@@ -35,6 +35,7 @@ class APIPlaceControllerTest {
                 .andExpect(jsonPath("$.data[0].placeType").value(PlaceType.COMMON.name()))
                 .andExpect(jsonPath("$.data[0].placeName").value("Bad민턴"))
                 .andExpect(jsonPath("$.data[0].address").value("서울 어디"))
+                .andExpect(jsonPath("$.data[0].phone").value("010-1111-2222"))
                 .andExpect(jsonPath("$.data[0].capacity").value(30))
                 .andExpect(jsonPath("$.data[0].memo").value("신규"))
                 .andExpect(jsonPath("$.success").value(true))

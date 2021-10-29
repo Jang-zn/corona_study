@@ -1,6 +1,8 @@
 package com.study.corona_study.controller.api;
 
+import com.study.corona_study.constant.PlaceType;
 import com.study.corona_study.dto.APIDataResponse;
+import com.study.corona_study.dto.PlaceDTO;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,8 +11,15 @@ import java.util.List;
 @RestController
 public class APIPlaceController {
     @GetMapping("/places")
-    public APIDataResponse<List<>> getPlace(){
-        return List.of("place1", "place2");
+    public APIDataResponse<List<PlaceDTO>> getPlace(){
+        return APIDataResponse.of(List.of(PlaceDTO.of(
+                PlaceType.COMMON,
+                "Bad민턴",
+                "서울 어디",
+                "010-1111-2222",
+                30,
+                "신규"
+        )));
     }
 
     @PostMapping("/places")
