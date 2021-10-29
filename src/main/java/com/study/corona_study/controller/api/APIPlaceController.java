@@ -28,8 +28,18 @@ public class APIPlaceController {
     }
 
     @GetMapping("/places/{placeId}")
-    public String getPlaceDetail(@PathVariable int placeId){
-        return "place : "+placeId;
+    public APIDataResponse<PlaceDTO> getPlaceDetail(@PathVariable Integer placeId){
+        if(placeId.equals(2)) {
+            return APIDataResponse.of(null);
+        }
+        return APIDataResponse.of(PlaceDTO.of(
+                PlaceType.COMMON,
+                "Bad민턴",
+                "서울 어디",
+                "010-1111-2222",
+                30,
+                "신규"
+        ));
     }
 
     @PutMapping("/places/{placeId}")

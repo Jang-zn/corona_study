@@ -23,7 +23,7 @@ class APIPlaceControllerTest {
 
     @DisplayName("[API][GET] 장소 리스트 조회")
     @Test
-    void givenNothing_whenRequestingPlaces_thenReturnListOfPlaces() throws Exception{
+    void givenNothing_whenRequestingPlaces_thenReturnListOfPlacesInStandardResponse() throws Exception{
         //Given
 
 
@@ -44,5 +44,41 @@ class APIPlaceControllerTest {
 
     }
 
+    @DisplayName("[API][GET] 단일 장소 조회 - 장소 있는경우")
+    @Test
+    void givenPlaceId_whenRequestingPlace_thenReturnPlaceInStandardResponse() throws Exception{
+        //Given
+        int placeId = 1;
+        //When&Then
+        mvc.perform(get("/api/places/"+placeId))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.data").isMap())
+                .andExpect(jsonPath("$.data.placeType").value(PlaceType.COMMON.name()))
+                .andExpect(jsonPath("$.data.placeName").value("Bad민턴"))
+                .andExpect(jsonPath("$.data.address").value("서울 어디"))
+                .andExpect(jsonPath("$.data.phone").value("010-1111-2222"))
+                .andExpect(jsonPath("$.data.capacity").value(30))
+                .andExpect(jsonPath("$.data.memo").value("신규"))
+                .andExpect(jsonPath("$.success").value(true))
+                .andExpect(jsonPath("$.errorCode").value(ErrorCode.OK.getCode()))
+                .andExpect(jsonPath("$.message").value(ErrorCode.OK.getMessage()));
+
+    }
+
+    @DisplayName("[API][GET] 단일 장소 조회 - 장소 없는경우")
+    @Test
+    void givenWrongPlaceId_whenRequestingPlace_thenReturnEmptyInStandardResponse() throws Exception{
+        //Given
+        int placeId = 2;
+        //When&Then
+        mvc.perform(get("/api/places/"+placeId))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.data").isEmpty())
+                .andExpect(jsonPath("$.success").value(true))
+                .andExpect(jsonPath("$.errorCode").value(ErrorCode.OK.getCode()))
+                .andExpect(jsonPath("$.message").value(ErrorCode.OK.getMessage()));
+    }
 
 }
