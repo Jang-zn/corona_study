@@ -30,7 +30,7 @@ class APIPlaceControllerTest {
         //When&Then
         mvc.perform(get("/api/places"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.data").isArray())
                 .andExpect(jsonPath("$.data[0].placeType").value(PlaceType.COMMON.name()))
                 .andExpect(jsonPath("$.data[0].placeName").value("Bad민턴"))
