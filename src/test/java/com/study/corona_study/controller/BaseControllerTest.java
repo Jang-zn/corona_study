@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.TestConstructor;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
@@ -18,12 +19,17 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+
+//@TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
+//위 어노테이션 지정해주면 파라미터에 지정된 모든 객체에 알아서 @AutoWired 사용됨
+//추천하진 않는다 -> 파라미터 컨트롤 주도권이 테스트 컨테이너로 넘어간다.
 @AutoConfigureMockMvc
 @SpringBootTest
 class BaseControllerTest {
 
     private final MockMvc mvc;
 
+    //@AutoWired 생성자 위에 붙이면 적용할 파라미터 모두에 대해서 바인딩해줌
     public BaseControllerTest(@Autowired MockMvc mvc){
         this.mvc = mvc;
     }
