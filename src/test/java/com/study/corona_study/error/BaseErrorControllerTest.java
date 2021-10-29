@@ -13,7 +13,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest
+@WebMvcTest(BaseErrorController.class)
 class BaseErrorControllerTest {
     private final MockMvc mvc;
 
@@ -28,7 +28,7 @@ class BaseErrorControllerTest {
         //Given
 
         //When&Then
-        mvc.perform(get("/asdf"))
+        mvc.perform(get("/wrong_uri"))
                 .andExpect(status().isNotFound())
                 .andDo(print());
     }
