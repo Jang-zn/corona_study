@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.TestConstructor;
@@ -23,8 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 //@TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
 //위 어노테이션 지정해주면 파라미터에 지정된 모든 객체에 알아서 @AutoWired 사용됨
 //추천하진 않는다 -> 파라미터 컨트롤 주도권이 테스트 컨테이너로 넘어간다.
-@AutoConfigureMockMvc
-@SpringBootTest
+@WebMvcTest(BaseController.class)
 class BaseControllerTest {
 
     private final MockMvc mvc;
