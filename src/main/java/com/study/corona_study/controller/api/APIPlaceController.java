@@ -1,5 +1,6 @@
 package com.study.corona_study.controller.api;
 
+import com.study.corona_study.dto.APIDataResponse;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 @RestController
 public class APIPlaceController {
     @GetMapping("/places")
-    public List<String> getPlace(){
+    public APIDataResponse getPlace(){
         return List.of("place1", "place2");
     }
 

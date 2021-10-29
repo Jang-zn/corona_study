@@ -1,18 +1,14 @@
 package com.study.corona_study.error;
 
 import com.study.corona_study.constant.ErrorCode;
-import com.study.corona_study.dto.APIErrorResoponse;
+import com.study.corona_study.dto.APIErrorResponse;
 import com.study.corona_study.exception.GeneralException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-
-import javax.servlet.http.HttpServletResponse;
-import java.util.Map;
 
 @RestControllerAdvice(annotations = RestController.class)
 //Spring boot 내부적으로 발생하는 예외는 모두 찾아서 처리하기 어려움
@@ -30,7 +26,7 @@ public class APIExceptionHandler extends ResponseEntityExceptionHandler {
 //                .body(APIErrorResoponse.of(false, errorCode,errorCode.getMessage(e))
 //                );
         return super.handleExceptionInternal(e,
-                APIErrorResoponse.of(false,errorCode.getCode(),errorCode.getMessage(e)),
+                APIErrorResponse.of(false,errorCode.getCode(),errorCode.getMessage(e)),
                 HttpHeaders.EMPTY, status, request);
     }
 
@@ -41,7 +37,7 @@ public class APIExceptionHandler extends ResponseEntityExceptionHandler {
         ErrorCode errorCode = ErrorCode.INTERNAL_ERROR;
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
         return super.handleExceptionInternal(e,
-                APIErrorResoponse.of(
+                APIErrorResponse.of(
                         false
                         ,errorCode.getCode(),errorCode.getMessage(e))
                         ,HttpHeaders.EMPTY
@@ -56,7 +52,7 @@ public class APIExceptionHandler extends ResponseEntityExceptionHandler {
                 ErrorCode.SPRING_INTERNAL_ERROR;
 
         return super.handleExceptionInternal(ex,
-                APIErrorResoponse.of(false,errorCode.getCode(),errorCode.getMessage(ex)),
+                APIErrorResponse.of(false,errorCode.getCode(),errorCode.getMessage(ex)),
                 headers, status, request);
     }
     

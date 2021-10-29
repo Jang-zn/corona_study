@@ -2,10 +2,8 @@ package com.study.corona_study.controller.api;
 
 
 import com.study.corona_study.constant.ErrorCode;
-import com.study.corona_study.dto.APIErrorResoponse;
 import com.study.corona_study.exception.GeneralException;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 

@@ -1,18 +1,12 @@
 package com.study.corona_study.error;
 
 import com.study.corona_study.constant.ErrorCode;
-import com.study.corona_study.dto.APIErrorResoponse;
 import com.study.corona_study.exception.GeneralException;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 @ControllerAdvice
