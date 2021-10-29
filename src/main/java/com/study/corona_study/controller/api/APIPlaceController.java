@@ -9,7 +9,7 @@ import java.util.List;
 @RestController
 public class APIPlaceController {
     @GetMapping("/places")
-    public APIDataResponse getPlace(){
+    public APIDataResponse<List<>> getPlace(){
         return List.of("place1", "place2");
     }
 
