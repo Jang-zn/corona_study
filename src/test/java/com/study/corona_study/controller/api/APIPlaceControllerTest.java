@@ -50,6 +50,7 @@ class APIPlaceControllerTest {
         //Given
         int placeId = 1;
         //When&Then
+        //JsonPath 사용할 경우 Json 문법으로 검사한다.
         mvc.perform(get("/api/places/"+placeId))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
